@@ -7,23 +7,26 @@
     <title>Курзе — домашние полуфабрикаты</title>
     <style>
       :root {
-        --bg: #fff7f2;
-        --panel: rgba(255, 255, 255, 0.82);
+        --bg: #fff7ef;
+        --bg-2: #fffdfb;
+        --panel: rgba(255, 255, 255, 0.9);
         --panel-strong: #ffffff;
-        --card: #fffaf7;
-        --primary: #ff8a00;
-        --primary-dark: #ee6f00;
-        --secondary: #ffb14a;
-        --text: #1e1a17;
-        --muted: #6f625d;
-        --line: rgba(29, 24, 20, 0.08);
-        --success: #1fbf75;
-        --error: #e25656;
-        --shadow: 0 24px 60px rgba(236, 117, 18, 0.15);
-        --shadow-soft: 0 12px 30px rgba(35, 25, 18, 0.08);
-        --radius-xl: 28px;
+        --card: #fffaf5;
+        --surface: #fff3e7;
+        --primary: #ff8b2c;
+        --primary-strong: #ef6b00;
+        --primary-soft: #ffe8d1;
+        --secondary: #f7b267;
+        --text: #211813;
+        --muted: #715d52;
+        --line: rgba(33, 24, 19, 0.08);
+        --success: #1bbf77;
+        --danger: #ea5b5b;
+        --shadow: 0 24px 56px rgba(186, 95, 18, 0.14);
+        --shadow-soft: 0 14px 32px rgba(31, 19, 13, 0.08);
+        --radius-xl: 30px;
         --radius-lg: 22px;
-        --radius-md: 18px;
+        --radius-md: 16px;
         --radius-sm: 12px;
       }
 
@@ -39,15 +42,10 @@
         margin: 0;
         font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(255, 170, 70, 0.14), transparent 30%),
-          radial-gradient(circle at bottom right, rgba(255, 138, 0, 0.12), transparent 30%),
+          radial-gradient(circle at top left, rgba(255, 171, 74, 0.2), transparent 26%),
+          radial-gradient(circle at bottom right, rgba(255, 139, 44, 0.12), transparent 22%),
           var(--bg);
         color: var(--text);
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
       }
 
       button,
@@ -57,23 +55,27 @@
         font: inherit;
       }
 
+      h1, h2, h3, h4, p {
+        margin-top: 0;
+      }
+
       .app-shell {
-        max-width: 1320px;
+        max-width: 1220px;
         margin: 0 auto;
-        padding: 20px 16px 80px;
+        padding: 18px 16px 90px;
       }
 
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 50;
-        backdrop-filter: blur(14px);
-        background: rgba(255, 247, 242, 0.78);
-        border-bottom: 1px solid rgba(30, 26, 23, 0.06);
+        z-index: 60;
+        backdrop-filter: blur(16px);
+        background: rgba(255, 247, 239, 0.8);
+        border-bottom: 1px solid rgba(33, 24, 19, 0.05);
       }
 
       .topbar-inner {
-        max-width: 1320px;
+        max-width: 1220px;
         margin: 0 auto;
         padding: 14px 16px;
         display: flex;
@@ -91,8 +93,8 @@
       .brand-mark {
         width: 44px;
         height: 44px;
-        border-radius: 15px;
-        background: linear-gradient(135deg, var(--primary), #ffb75e);
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         box-shadow: var(--shadow-soft);
         display: grid;
         place-items: center;
@@ -100,167 +102,174 @@
       }
 
       .brand-name {
-        font-weight: 800;
-        letter-spacing: 0.04em;
+        font-weight: 900;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
 
       .mini-tag {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(255, 138, 0, 0.1);
-        color: var(--primary-dark);
-        border: 1px solid rgba(255, 138, 0, 0.18);
+        padding: 9px 14px;
         border-radius: 999px;
-        padding: 8px 12px;
-        font-size: 0.78rem;
-        font-weight: 700;
+        background: rgba(255, 139, 44, 0.08);
+        color: var(--primary-strong);
+        border: 1px solid rgba(255, 139, 44, 0.18);
+        font-size: 0.74rem;
+        font-weight: 800;
       }
 
       .hero {
         display: grid;
-        grid-template-columns: 1.4fr 0.8fr;
+        grid-template-columns: 1.5fr 0.95fr;
         gap: 22px;
-        margin-top: 24px;
+        margin-top: 18px;
       }
 
       .hero-card,
-      .summary-card,
-      .panel,
+      .stat-panel,
       .product-card,
-      .order-card {
+      .panel,
+      .checkout-card {
         background: var(--panel);
-        border: 1px solid rgba(30, 26, 23, 0.05);
+        border: 1px solid var(--line);
         box-shadow: var(--shadow-soft);
         border-radius: var(--radius-xl);
-        backdrop-filter: blur(10px);
       }
 
       .hero-card {
         position: relative;
         overflow: hidden;
-        padding: 28px 28px 26px;
-        min-height: 320px;
+        padding: 24px 24px 26px;
+        min-height: 300px;
       }
 
       .hero-card::before {
         content: "";
         position: absolute;
-        inset: auto -120px -120px auto;
-        width: 300px;
-        height: 300px;
+        right: -50px;
+        bottom: -50px;
+        width: 260px;
+        height: 260px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(255, 177, 74, 0.34), transparent 60%);
+        background: radial-gradient(circle, rgba(255, 177, 86, 0.38), transparent 58%);
+      }
+
+      .hero-card > * {
+        position: relative;
+        z-index: 1;
       }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
-        border-radius: 999px;
-        background: rgba(255, 138, 0, 0.1);
-        color: var(--primary-dark);
-        font-weight: 700;
-        font-size: 0.76rem;
+        gap: 8px;
         padding: 8px 12px;
-        letter-spacing: 0.05em;
+        border-radius: 999px;
+        background: rgba(255, 139, 44, 0.08);
+        color: var(--primary-strong);
+        border: 1px solid rgba(255, 139, 44, 0.18);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      h1 {
-        font-size: clamp(2.2rem, 3.6vw, 4rem);
-        line-height: 1.06;
-        margin: 18px 0 14px;
-        letter-spacing: -0.06em;
+      .hero h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(2.1rem, 3vw, 4rem);
+        line-height: 0.98;
+        letter-spacing: -0.07em;
       }
 
-      .hero-card p {
-        max-width: 720px;
-        color: var(--muted);
+      .hero p {
+        max-width: 660px;
+        margin-bottom: 22px;
         font-size: 1.02rem;
         line-height: 1.6;
-        margin: 0 0 22px;
+        color: var(--muted);
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
-        align-items: center;
+        gap: 12px;
       }
 
       .primary-btn,
       .secondary-btn,
       .chip,
-      .nav-btn {
+      .step-btn,
+      .add-btn,
+      .qty-btn,
+      .action-link {
         border: none;
-        padding: 0 18px;
-        border-radius: 14px;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-        font-weight: 700;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        min-height: 52px;
+        padding: 0 20px;
+        border-radius: 14px;
+        font-weight: 800;
       }
 
       .primary-btn {
-        height: 52px;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #fff;
-        box-shadow: 0 18px 32px rgba(255, 138, 0, 0.25);
+        color: white;
+        box-shadow: 0 16px 30px rgba(255, 139, 44, 0.28);
       }
 
       .secondary-btn {
-        height: 52px;
-        background: rgba(255, 138, 0, 0.08);
-        color: var(--primary-dark);
+        background: rgba(255, 139, 44, 0.08);
+        color: var(--primary-strong);
+        border: 1px solid rgba(255, 139, 44, 0.18);
       }
 
       .primary-btn:hover,
       .secondary-btn:hover,
-      .nav-btn:hover,
       .chip:hover,
+      .step-btn:hover,
       .add-btn:hover,
       .qty-btn:hover,
-      .submit-btn:hover,
-      .step-btn:hover {
+      .action-link:hover {
         transform: translateY(-1px);
       }
 
-      .hero-aside {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
+      .stat-panel {
+        padding: 20px;
       }
 
-      .summary-card {
-        padding: 22px;
-      }
-
-      .summary-list {
+      .stat-list {
         list-style: none;
-        margin: 0;
         padding: 0;
+        margin: 0;
         display: grid;
         gap: 12px;
       }
 
-      .summary-list li {
+      .stat-list li {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         gap: 12px;
         padding: 12px 14px;
         border-radius: 14px;
-        background: rgba(255, 138, 0, 0.05);
+        background: rgba(255, 139, 44, 0.04);
+        border: 1px solid rgba(255, 139, 44, 0.08);
       }
 
-      .summary-list strong {
-        font-size: 0.85rem;
+      .stat-list strong {
+        font-size: 0.75rem;
         color: var(--muted);
       }
 
-      .summary-list span {
-        font-weight: 800;
+      .stat-list span {
+        font-weight: 900;
       }
 
       .section-header {
@@ -268,13 +277,13 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        margin: 28px 0 16px;
+        margin: 36px 0 14px;
       }
 
       .section-header h2 {
-        margin: 0;
         font-size: clamp(1.5rem, 2vw, 2.2rem);
         letter-spacing: -0.05em;
+        margin: 0;
       }
 
       .filters {
@@ -284,22 +293,24 @@
       }
 
       .chip {
-        height: 42px;
-        background: rgba(30, 26, 23, 0.04);
-        color: var(--text);
+        min-height: 42px;
         padding: 0 16px;
+        border-radius: 999px;
+        background: rgba(33, 24, 19, 0.04);
+        color: var(--text);
+        font-weight: 800;
       }
 
       .chip.active {
         background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #fff;
-        box-shadow: 0 16px 30px rgba(255, 138, 0, 0.2);
+        color: white;
+        box-shadow: 0 18px 28px rgba(255, 139, 44, 0.2);
       }
 
-      .catalog-layout {
+      .catalog-wrap {
         display: grid;
-        grid-template-columns: minmax(0, 1.8fr) minmax(340px, 0.82fr);
-        gap: 22px;
+        grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.8fr);
+        gap: 20px;
         align-items: start;
       }
 
@@ -311,33 +322,33 @@
 
       .product-card {
         overflow: hidden;
-        background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,250,247,0.96));
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,250,247,0.96));
       }
 
       .product-visual {
-        height: 180px;
-        background: linear-gradient(135deg, rgba(255, 138, 0, 0.18), rgba(255, 192, 88, 0.32));
         position: relative;
+        height: 180px;
         display: grid;
         place-items: center;
-        font-size: clamp(2.6rem, 5vw, 4rem);
+        background: linear-gradient(135deg, rgba(255, 139, 44, 0.2), rgba(255, 206, 124, 0.42));
       }
 
       .product-visual::before {
         content: "";
         position: absolute;
-        inset: 20px 26px 18px 26px;
-        border-radius: 20px;
-        background: rgba(255,255,255,0.26);
+        inset: 18px 22px 16px 22px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.2);
       }
 
       .product-visual span {
         position: relative;
         z-index: 1;
+        font-size: clamp(2.7rem, 5vw, 4rem);
       }
 
       .product-body {
-        padding: 18px 18px 20px;
+        padding: 18px;
       }
 
       .meta-row {
@@ -349,60 +360,57 @@
       }
 
       .product-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 5px 9px;
+        padding: 7px 10px;
         border-radius: 999px;
-        font-size: 0.72rem;
-        background: rgba(255, 138, 0, 0.08);
-        color: var(--primary-dark);
-        font-weight: 700;
+        background: rgba(255, 139, 44, 0.08);
+        color: var(--primary-strong);
+        font-weight: 800;
+        font-size: 0.7rem;
       }
 
       .price {
         font-size: 1.7rem;
         font-weight: 900;
-        letter-spacing: -0.05em;
+        letter-spacing: -0.06em;
       }
 
-      h3 {
+      .product-name {
         margin: 0 0 10px;
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         letter-spacing: -0.04em;
       }
 
       .product-description {
         margin: 0 0 14px;
-        color: var(--muted);
         line-height: 1.55;
-        min-height: 46px;
+        color: var(--muted);
+        min-height: 48px;
       }
 
-      .stats {
+      .nutrition {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-        margin-bottom: 18px;
+        gap: 8px;
+        margin-bottom: 16px;
       }
 
-      .stat {
-        background: rgba(30, 26, 23, 0.035);
-        border-radius: 12px;
+      .nutrient {
         padding: 10px 8px;
+        border-radius: 12px;
+        background: rgba(33, 24, 19, 0.035);
         text-align: center;
       }
 
-      .stat strong {
+      .nutrient strong {
         display: block;
-        font-size: 0.82rem;
+        font-size: 0.72rem;
         color: var(--muted);
       }
 
-      .stat span {
+      .nutrient span {
         display: block;
         margin-top: 4px;
-        font-weight: 800;
+        font-weight: 900;
       }
 
       .product-actions {
@@ -414,40 +422,37 @@
       }
 
       .qty-control {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        background: rgba(30, 26, 23, 0.04);
-        border-radius: 14px;
+        gap: 8px;
+        background: rgba(33, 24, 19, 0.04);
         padding: 6px;
+        border-radius: 14px;
       }
 
       .qty-btn {
         width: 32px;
         height: 32px;
         border-radius: 10px;
-        border: none;
-        background: #fff;
-        font-size: 1.2rem;
+        background: white;
         color: var(--text);
-        cursor: pointer;
+        font-size: 1.2rem;
       }
 
       .qty-value {
-        min-width: 30px;
+        min-width: 24px;
         text-align: center;
         font-weight: 800;
       }
 
       .add-btn {
         flex: 1;
-        min-width: 120px;
-        height: 42px;
+        min-height: 42px;
+        padding: 0 14px;
         border-radius: 12px;
-        border: none;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #fff;
+        color: white;
         font-weight: 800;
-        cursor: pointer;
       }
 
       .cart-panel {
@@ -455,16 +460,22 @@
         top: 92px;
       }
 
-      .order-card {
-        padding: 22px;
+      .checkout-card {
+        padding: 20px;
       }
 
       .cart-head {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        align-items: center;
+        gap: 10px;
         margin-bottom: 14px;
+      }
+
+      .cart-head h3 {
+        margin: 0;
+        font-size: 1.4rem;
+        letter-spacing: -0.04em;
       }
 
       .cart-count {
@@ -472,25 +483,27 @@
         height: 30px;
         padding: 0 10px;
         border-radius: 999px;
-        background: rgba(255, 138, 0, 0.1);
-        color: var(--primary-dark);
+        background: rgba(255, 139, 44, 0.08);
+        color: var(--primary-strong);
         display: inline-flex;
-        align-items: center;
         justify-content: center;
-        font-weight: 800;
+        align-items: center;
+        font-weight: 900;
       }
 
       .empty-cart {
-        padding: 20px 14px 10px;
+        margin-top: 10px;
+        padding: 16px 14px 12px;
         text-align: center;
+        border-radius: 14px;
+        background: rgba(33, 24, 19, 0.025);
         color: var(--muted);
         line-height: 1.6;
       }
 
       .cart-list {
         display: grid;
-        gap: 14px;
-        margin: 12px 0 18px;
+        gap: 12px;
       }
 
       .cart-item {
@@ -498,24 +511,20 @@
         grid-template-columns: 1fr auto;
         gap: 10px;
         padding: 12px 12px 10px;
-        border-radius: 16px;
-        background: rgba(30, 26, 23, 0.03);
-        border: 1px solid rgba(30, 26, 23, 0.04);
-      }
-
-      .cart-item-main {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
+        border-radius: 14px;
+        background: rgba(33, 24, 19, 0.03);
+        border: 1px solid rgba(33, 24, 19, 0.04);
       }
 
       .cart-item-name {
         font-weight: 800;
+        line-height: 1.4;
       }
 
       .cart-item-meta {
+        font-size: 0.75rem;
         color: var(--muted);
-        font-size: 0.82rem;
+        margin-top: 2px;
       }
 
       .cart-item-price {
@@ -523,19 +532,28 @@
         white-space: nowrap;
       }
 
-      .cart-total {
-        display: grid;
-        gap: 10px;
-        margin-top: 8px;
-        padding-top: 12px;
+      .remove-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        background: rgba(234, 91, 91, 0.08);
+        color: var(--danger);
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .total-box {
+        margin-top: 18px;
+        padding-top: 14px;
         border-top: 1px solid var(--line);
       }
 
       .total-row {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 16px;
+        align-items: center;
+        gap: 12px;
       }
 
       .total-row strong {
@@ -548,27 +566,21 @@
         letter-spacing: -0.05em;
       }
 
-      .checkout-panel {
-        margin-top: 26px;
-        padding: 18px 0 0;
-      }
-
       .checkout-steps {
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
+        gap: 8px;
+        margin: 18px 0 18px;
       }
 
       .step-pill {
         flex: 1;
-        min-width: 120px;
-        text-align: center;
-        font-size: 0.76rem;
-        font-weight: 800;
-        padding: 10px 10px;
+        min-height: 38px;
         border-radius: 999px;
-        background: rgba(30, 26, 23, 0.04);
+        display: grid;
+        place-items: center;
+        font-size: 0.72rem;
+        font-weight: 800;
+        background: rgba(33, 24, 19, 0.04);
         color: var(--muted);
       }
 
@@ -577,31 +589,35 @@
         color: white;
       }
 
-      .form-grid {
-        display: grid;
-        gap: 16px;
+      .step-section {
+        display: none;
+      }
+
+      .step-section.active {
+        display: block;
       }
 
       .field-group {
         display: grid;
-        gap: 7px;
+        gap: 8px;
+        margin-bottom: 14px;
       }
 
       .field-group label {
+        font-size: 0.8rem;
+        font-weight: 800;
         color: var(--muted);
-        font-size: 0.85rem;
-        font-weight: 700;
       }
 
       .field-group input,
       .field-group select,
       .field-group textarea {
         width: 100%;
-        border: 1px solid rgba(30, 26, 23, 0.08);
-        background: rgba(255, 255, 255, 0.8);
+        min-height: 50px;
+        border: 1px solid rgba(33, 24, 19, 0.08);
         border-radius: 14px;
-        min-height: 52px;
         padding: 12px 14px;
+        background: rgba(255,255,255,0.8);
         color: var(--text);
         outline: none;
       }
@@ -614,7 +630,7 @@
       .radio-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
+        gap: 10px;
       }
 
       .radio-box {
@@ -622,14 +638,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
         min-height: 54px;
-        border: 1px solid rgba(30, 26, 23, 0.08);
-        background: rgba(255, 255, 255, 0.7);
         border-radius: 14px;
-        padding: 12px 14px;
+        border: 1px solid rgba(33, 24, 19, 0.08);
+        background: rgba(255,255,255,0.75);
         cursor: pointer;
-        transition: all 0.2s ease;
+        font-weight: 700;
       }
 
       .radio-box input {
@@ -639,47 +653,21 @@
       }
 
       .radio-box.active {
-        border-color: rgba(255, 138, 0, 0.3);
-        background: rgba(255, 138, 0, 0.08);
-        box-shadow: inset 0 0 0 1px rgba(255, 138, 0, 0.15);
-      }
-
-      .tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .nav-btn {
-        min-height: 46px;
-        background: rgba(30, 26, 23, 0.04);
-        color: var(--text);
-      }
-
-      .nav-btn.primary {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #fff;
-      }
-
-      .step-section {
-        display: none;
-      }
-
-      .step-section.active {
-        display: block;
+        background: rgba(255, 139, 44, 0.08);
+        border-color: rgba(255, 139, 44, 0.26);
       }
 
       .review-box {
-        background: rgba(30, 26, 23, 0.02);
-        border: 1px solid rgba(30, 26, 23, 0.06);
-        border-radius: 18px;
         padding: 16px;
+        border-radius: 18px;
+        background: rgba(33, 24, 19, 0.025);
+        border: 1px solid rgba(33, 24, 19, 0.05);
       }
 
       .review-list {
         list-style: none;
-        margin: 0;
         padding: 0;
+        margin: 0;
         display: grid;
         gap: 10px;
       }
@@ -687,9 +675,9 @@
       .review-list li {
         display: flex;
         justify-content: space-between;
-        gap: 14px;
+        gap: 12px;
         padding-bottom: 8px;
-        border-bottom: 1px solid rgba(30, 26, 23, 0.06);
+        border-bottom: 1px solid rgba(33, 24, 19, 0.06);
       }
 
       .review-list li:last-child {
@@ -701,62 +689,45 @@
         color: var(--muted);
       }
 
-      .summary-line {
+      .review-total {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
         gap: 12px;
         margin-top: 18px;
-        padding-top: 16px;
-        border-top: 1px solid rgba(30, 26, 23, 0.08);
+        padding-top: 14px;
+        border-top: 1px solid rgba(33, 24, 19, 0.08);
       }
 
-      .summary-line .amount {
-        font-size: 1.8rem;
-        letter-spacing: -0.05em;
+      .review-total .amount {
         font-weight: 900;
+        font-size: 1.6rem;
+        letter-spacing: -0.06em;
       }
 
       .actions-row {
         display: flex;
         justify-content: space-between;
         gap: 12px;
-        margin-top: 24px;
+        margin-top: 18px;
       }
 
       .step-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         min-height: 52px;
-        border: none;
         border-radius: 14px;
         font-weight: 800;
-        cursor: pointer;
+        padding: 0 18px;
       }
 
       .step-btn.back {
-        width: 160px;
-        background: rgba(30, 26, 23, 0.04);
+        background: rgba(33, 24, 19, 0.04);
         color: var(--text);
       }
 
       .step-btn.next {
         flex: 1;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #fff;
-      }
-
-      .submit-btn {
-        width: 100%;
-        min-height: 54px;
-        border: none;
-        border-radius: 16px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #fff;
-        font-weight: 900;
-        cursor: pointer;
-        box-shadow: 0 18px 32px rgba(255, 138, 0, 0.2);
+        color: white;
       }
 
       .hidden {
@@ -766,16 +737,15 @@
       .toast {
         position: fixed;
         left: 50%;
-        bottom: 24px;
+        bottom: 26px;
         transform: translateX(-50%) translateY(20px);
-        border-radius: 14px;
-        background: rgba(24, 27, 37, 0.9);
-        color: white;
-        padding: 12px 16px;
-        font-size: 0.9rem;
-        letter-spacing: 0.02em;
         opacity: 0;
-        transition: 0.2s ease;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: rgba(22, 24, 30, 0.92);
+        color: white;
+        box-shadow: 0 18px 34px rgba(0,0,0,0.18);
+        transition: 0.22s ease;
         z-index: 120;
       }
 
@@ -784,45 +754,43 @@
         transform: translateX(-50%) translateY(0);
       }
 
-      @media (max-width: 980px) {
+      @media (max-width: 1024px) {
         .hero,
-        .catalog-layout {
+        .catalog-wrap {
           grid-template-columns: 1fr;
         }
 
         .product-grid {
           grid-template-columns: 1fr;
         }
+
+        .cart-panel {
+          position: static;
+        }
       }
 
       @media (max-width: 560px) {
         .topbar-inner,
-        .hero-card,
-        .order-card,
-        .summary-card {
-          padding-left: 14px;
-          padding-right: 14px;
+        .app-shell {
+          padding-left: 12px;
+          padding-right: 12px;
         }
 
-        .brand-name {
-          font-size: 0.75rem;
+        .hero-card,
+        .stat-panel,
+        .checkout-card {
+          padding: 16px;
         }
 
         .hero-actions,
         .actions-row,
-        .radio-row,
-        .tabs {
-          grid-template-columns: 1fr;
+        .radio-row {
           display: grid;
+          grid-template-columns: 1fr;
         }
 
-        .actions-row {
-          gap: 12px;
-        }
-
-        .step-btn.back,
-        .step-btn.next {
-          width: 100%;
+        .brand-name {
+          font-size: 0.7rem;
         }
       }
     </style>
@@ -832,11 +800,9 @@
       <div class="topbar-inner">
         <div class="brand">
           <div class="brand-mark">🥟</div>
-          <div>
-            <div class="brand-name">Курзе &amp; Домашние блюда</div>
-          </div>
+          <div class="brand-name">Курзе &amp; Домашние блюда</div>
         </div>
-        <div class="mini-tag">Свежий, вкусный, с любовью</div>
+        <div class="mini-tag">Свежий вкус каждый день</div>
       </div>
     </header>
 
@@ -844,11 +810,10 @@
       <section class="hero">
         <div class="hero-card">
           <div class="eyebrow">Домашнее производство</div>
-          <h1>Полуфабрикаты для каждого дня и праздника</h1>
+          <h1>Полуфабрикаты, которые хочется снова и снова</h1>
           <p>
-            Курзе, манты, блины и другие блюда, которые готовятся с заботой о вкусе,
-            качестве и удобстве. Выбирайте любимые позиции, добавляйте в корзину и
-            оформляйте заказ за пару кликов.
+            Курзе, блины, манты и другие любимые блюда — свежие, ароматные, с понятными
+            характеристиками, удобной подачей и быстрым оформлением заказа.
           </p>
           <div class="hero-actions">
             <button class="primary-btn" id="scrollToCatalog">Сделать заказ</button>
@@ -856,28 +821,25 @@
           </div>
         </div>
 
-        <aside class="hero-aside">
-          <div class="summary-card">
-            <div class="eyebrow" style="margin-bottom: 14px;">Почему выбирают нас</div>
-            <ul class="summary-list">
-              <li>
-                <strong>Ассортимент</strong>
-                <span>20+ позиций</span>
-              </li>
-              <li>
-                <strong>Калорийность</strong>
-                <span>Подробно</span>
-              </li>
-              <li>
-                <strong>Готовка</strong>
-                <span>До 15 мин</span>
-              </li>
-              <li>
-                <strong>Доставка</strong>
-                <span>По городу</span>
-              </li>
-            </ul>
-          </div>
+        <aside class="stat-panel">
+          <ul class="stat-list">
+            <li>
+              <strong>Ассортимент</strong>
+              <span>20+ позиций</span>
+            </li>
+            <li>
+              <strong>Готовка</strong>
+              <span>до 15 мин</span>
+            </li>
+            <li>
+              <strong>Калорийность</strong>
+              <span>подробно</span>
+            </li>
+            <li>
+              <strong>Доставка</strong>
+              <span>по городу</span>
+            </li>
+          </ul>
         </aside>
       </section>
 
@@ -886,11 +848,11 @@
         <div class="filters" id="categoryFilters"></div>
       </div>
 
-      <section class="catalog-layout">
+      <section class="catalog-wrap">
         <div class="product-grid" id="productGrid"></div>
 
         <aside class="cart-panel">
-          <div class="order-card">
+          <div class="checkout-card">
             <div class="cart-head">
               <h3>Корзина</h3>
               <span class="cart-count" id="cartCount">0</span>
@@ -898,119 +860,112 @@
 
             <div id="cartItems" class="cart-list"></div>
             <div id="emptyCart" class="empty-cart">
-              Ваша корзина пока пуста.<br />Добавьте любимые блюда, чтобы оформить заказ.
+              В корзине пока пусто.<br />Добавьте любимые товары и оформите заказ.
             </div>
 
-            <div class="cart-total">
+            <div class="total-box">
               <div class="total-row">
                 <strong>Итого</strong>
                 <span id="totalPrice">0 ₽</span>
               </div>
             </div>
 
-            <div class="checkout-panel">
-              <div class="checkout-steps">
-                <div class="step-pill active">Товар</div>
-                <div class="step-pill">Данные</div>
-                <div class="step-pill">Проверка</div>
+            <div class="checkout-steps">
+              <div class="step-pill active">Товар</div>
+              <div class="step-pill">Данные</div>
+              <div class="step-pill">Проверка</div>
+            </div>
+
+            <div class="step-section active" data-step="0">
+              <div class="field-group">
+                <label>Имя</label>
+                <input id="customerName" type="text" placeholder="Как к вам обращаться?" />
               </div>
+              <div class="field-group">
+                <label>Телефон</label>
+                <input id="phone" type="tel" placeholder="+7 (___) ___-__-__" />
+              </div>
+            </div>
 
-              <div class="step-section active" data-step="0">
-                <div class="form-grid">
-                  <div class="field-group">
-                    <label>Имя</label>
-                    <input id="customerName" type="text" placeholder="Как к вам обращаться?" />
-                  </div>
-
-                  <div class="field-group">
-                    <label>Телефон</label>
-                    <input id="phone" type="tel" placeholder="+7 (___) ___-__-__" />
-                  </div>
+            <div class="step-section" data-step="1">
+              <div class="field-group">
+                <label>Способ оплаты</label>
+                <div class="radio-row">
+                  <label class="radio-box active">
+                    <input type="radio" name="payment" value="cash" checked />
+                    <span>💵 Наличными</span>
+                  </label>
+                  <label class="radio-box">
+                    <input type="radio" name="payment" value="card" />
+                    <span>💳 Картой</span>
+                  </label>
                 </div>
               </div>
 
-              <div class="step-section" data-step="1">
-                <div class="form-grid">
-                  <div class="field-group">
-                    <label>Способ оплаты</label>
-                    <div class="radio-row" id="paymentOptions">
-                      <label class="radio-box active">
-                        <input type="radio" name="payment" value="cash" checked />
-                        <span>💵 Наличными</span>
-                      </label>
-                      <label class="radio-box">
-                        <input type="radio" name="payment" value="card" />
-                        <span>💳 Картой</span>
-                      </label>
-                    </div>
-                  </div>
+              <div id="paymentLinkField" class="field-group hidden">
+                <label>Ссылка на оплату</label>
+                <input id="paymentLink" type="url" placeholder="https://payment.example.com" />
+              </div>
 
-                  <div class="field-group" id="paymentLinkField" style="display:none;">
-                    <label>Ссылка на оплату</label>
-                    <input type="url" id="paymentLink" placeholder="https://example.com/pay" />
-                  </div>
-
-                  <div class="field-group">
-                    <label>Способ получения</label>
-                    <div class="radio-row" id="deliveryOptions">
-                      <label class="radio-box active">
-                        <input type="radio" name="deliveryType" value="pickup" checked />
-                        <span>🏬 Самовывоз</span>
-                      </label>
-                      <label class="radio-box">
-                        <input type="radio" name="deliveryType" value="delivery" />
-                        <span>🚚 Доставка</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div id="pickupBlock">
-                    <div class="field-group">
-                      <label>Адрес самовывоза</label>
-                      <select id="pickupPoint">
-                        <option value="Микрорайон Сосновый, ул. Лесная, 12">Микрорайон Сосновый, ул. Лесная, 12</option>
-                        <option value="Центр, ул. Комсомольская, 44">Центр, ул. Комсомольская, 44</option>
-                        <option value="ЖК «Лазурный», пр. Мира, 90">ЖК «Лазурный», пр. Мира, 90</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div id="deliveryBlock" class="hidden">
-                    <div class="field-group">
-                      <label>Адрес доставки</label>
-                      <textarea id="address" placeholder="Введите адрес, район, дом, подъезд, этаж"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="field-group">
-                    <label>Комментарий к заказу</label>
-                    <textarea id="comment" placeholder="Например: без лука, на 2 порции, позвонить перед доставкой"></textarea>
-                  </div>
+              <div class="field-group">
+                <label>Способ получения</label>
+                <div class="radio-row">
+                  <label class="radio-box active">
+                    <input type="radio" name="deliveryType" value="pickup" checked />
+                    <span>🏬 Самовывоз</span>
+                  </label>
+                  <label class="radio-box">
+                    <input type="radio" name="deliveryType" value="delivery" />
+                    <span>🚚 Доставка</span>
+                  </label>
                 </div>
               </div>
 
-              <div class="step-section" data-step="2">
-                <div class="review-box">
-                  <ul class="review-list" id="reviewList"></ul>
-                </div>
-                <div class="summary-line">
-                  <strong>К оплате</strong>
-                  <span class="amount" id="reviewTotal">0 ₽</span>
+              <div id="pickupBlock">
+                <div class="field-group">
+                  <label>Адрес самовывоза</label>
+                  <select id="pickupPoint">
+                    <option value="Микрорайон Сосновый, ул. Лесная, 12">Микрорайон Сосновый, ул. Лесная, 12</option>
+                    <option value="Центр, ул. Комсомольская, 44">Центр, ул. Комсомольская, 44</option>
+                    <option value="ЖК «Лазурный», пр. Мира, 90">ЖК «Лазурный», пр. Мира, 90</option>
+                  </select>
                 </div>
               </div>
 
-              <div class="actions-row">
-                <button class="step-btn back hidden" id="prevStep">Назад</button>
-                <button class="step-btn next" id="nextStep">Далее</button>
+              <div id="deliveryBlock" class="hidden">
+                <div class="field-group">
+                  <label>Адрес доставки</label>
+                  <textarea id="address" placeholder="Введите адрес, район, дом, подъезд, этаж"></textarea>
+                </div>
               </div>
+
+              <div class="field-group">
+                <label>Комментарий</label>
+                <textarea id="comment" placeholder="Например: без лука, по возможности позвоните перед доставкой"></textarea>
+              </div>
+            </div>
+
+            <div class="step-section" data-step="2">
+              <div class="review-box">
+                <ul class="review-list" id="reviewList"></ul>
+              </div>
+              <div class="review-total">
+                <strong>К оплате</strong>
+                <span class="amount" id="reviewTotal">0 ₽</span>
+              </div>
+            </div>
+
+            <div class="actions-row">
+              <button class="step-btn back hidden" id="prevStep">Назад</button>
+              <button class="step-btn next" id="nextStep">Далее</button>
             </div>
           </div>
         </aside>
       </section>
 
-      <section class="section-header" id="about" style="margin-top: 48px;">
+      <div class="section-header" id="about" style="margin-top: 40px;">
         <h2>Как это работает</h2>
-      </section>
+      </div>
     </main>
 
     <div class="toast" id="toast"></div>
@@ -1018,190 +973,162 @@
     <script>
       const products = [
         {
-          id: "kurze-beef",
-          name: "Курзе с говядиной",
-          category: "Курзе",
-          emoji: "🥩",
+          id: 'kurze-beef',
+          name: 'Курзе с говядиной',
+          category: 'Курзе',
+          emoji: '🥩',
           price: 280,
           kcal: 320,
           protein: 18,
           fat: 15,
           carbs: 20,
-          time: "12-15 мин",
-          weight: "180 г",
-          description: "Нежное тесто и сочная начинка из говядины с луком и специями.",
-          ingredients: ["Говядина", "Лук", "Специи", "Тесто"],
-          variant: "Классический"
+          description: 'Нежное тесто и сочная говядина с луком и специями.',
+          variant: 'Классический'
         },
         {
-          id: "kurze-chicken",
-          name: "Курзе с курицей",
-          category: "Курзе",
-          emoji: "🍗",
+          id: 'kurze-chicken',
+          name: 'Курзе с курицей',
+          category: 'Курзе',
+          emoji: '🍗',
           price: 260,
           kcal: 300,
           protein: 17,
           fat: 12,
           carbs: 18,
-          time: "10-12 мин",
-          weight: "170 г",
-          description: "Лёгкая и ароматная курица в мягком слоёном варианте.",
-          ingredients: ["Курица", "Лук", "Петрушка", "Тесто"],
-          variant: "Классический"
+          description: 'Лёгкая и ароматная курица в мягком слоёном варианте.',
+          variant: 'Классический'
         },
         {
-          id: "kurze-turkey",
-          name: "Курзе с индейкой",
-          category: "Курзе",
-          emoji: "🦃",
+          id: 'kurze-turkey',
+          name: 'Курзе с индейкой',
+          category: 'Курзе',
+          emoji: '🦃',
           price: 290,
           kcal: 310,
           protein: 19,
           fat: 11,
           carbs: 19,
-          time: "12-15 мин",
-          weight: "180 г",
-          description: "Диетический вариант с индейкой и пикантным вкусом.",
-          ingredients: ["Индейка", "Лук", "Пряности", "Тесто"],
-          variant: "Классический"
+          description: 'Диетический вариант с индейкой и пикантным вкусом.',
+          variant: 'Классический'
         },
         {
-          id: "kurze-curd",
-          name: "Курзе с творогом",
-          category: "Курзе",
-          emoji: "🧀",
+          id: 'kurze-curd',
+          name: 'Курзе с творогом',
+          category: 'Курзе',
+          emoji: '🧀',
           price: 245,
           kcal: 280,
           protein: 15,
           fat: 10,
           carbs: 24,
-          time: "8-10 мин",
-          weight: "160 г",
-          description: "Нежный творожный вкус, очень мягкое тесто и простое приготовление.",
-          ingredients: ["Творог", "Сметана", "Зелень", "Тесто"],
-          variant: "Классический"
+          description: 'Мягкий творожный вкус и нежное домашнее тесто.',
+          variant: 'Классический'
         },
         {
-          id: "blini",
-          name: "Блины",
-          category: "Блины",
-          emoji: "🥞",
+          id: 'blini',
+          name: 'Блины',
+          category: 'Блины',
+          emoji: '🥞',
           price: 180,
           kcal: 240,
           protein: 9,
           fat: 8,
           carbs: 30,
-          time: "7-10 мин",
-          weight: "150 г",
-          description: "Тонкие и мягкие блины, удобные для завтрака и перекуса.",
-          ingredients: ["Мука", "Молоко", "Яйцо", "Сахар"],
-          variant: "Классические"
+          description: 'Тонкие и мягкие блины для завтрака и перекуса.',
+          variant: 'Классические'
         },
         {
-          id: "manti",
-          name: "Манты",
-          category: "Манты",
-          emoji: "🥟",
+          id: 'manti',
+          name: 'Манты',
+          category: 'Манты',
+          emoji: '🥟',
           price: 320,
           kcal: 360,
           protein: 20,
           fat: 14,
           carbs: 24,
-          time: "15-18 мин",
-          weight: "200 г",
-          description: "Сытные манты с ароматной мясной начинкой и нежной текстурой.",
-          ingredients: ["Мясо", "Лук", "Тесто", "Специи"],
-          variant: "С говядиной"
+          description: 'Сытные и ароматные манты с мясной начинкой.',
+          variant: 'С говядиной'
         },
         {
-          id: "dumplings",
-          name: "Пельмени",
-          category: "Другое",
-          emoji: "🧊",
+          id: 'dumplings',
+          name: 'Пельмени',
+          category: 'Другое',
+          emoji: '🧊',
           price: 260,
           kcal: 290,
           protein: 16,
           fat: 10,
           carbs: 21,
-          time: "12 мин",
-          weight: "180 г",
-          description: "Тонкие полуфабрикаты с сочной начинкой и удобной упаковкой.",
-          ingredients: ["Мясо", "Лук", "Тесто", "Специи"],
-          variant: "Домашние"
+          description: 'Домашние полуфабрикаты с сочной начинкой.',
+          variant: 'Домашние'
         },
         {
-          id: "pie",
-          name: "Сладкий пирог",
-          category: "Другое",
-          emoji: "🥧",
+          id: 'pie',
+          name: 'Сладкий пирог',
+          category: 'Другое',
+          emoji: '🥧',
           price: 220,
           kcal: 280,
           protein: 8,
           fat: 12,
           carbs: 32,
-          time: "8-12 мин",
-          weight: "170 г",
-          description: "Нежный пирог с начинкой на основе фруктов и домашних рецептур.",
-          ingredients: ["Тесто", "Фрукты", "Сахар", "Яйцо"],
-          variant: "Фруктовый"
+          description: 'Нежный пирог с фруктовой начинкой на домашнем тесте.',
+          variant: 'Фруктовый'
         }
       ];
 
-      const categories = ["Все", "Курзе", "Блины", "Манты", "Другое"];
+      const categories = ['Все', 'Курзе', 'Блины', 'Манты', 'Другое'];
       const state = {
-        category: "Все",
+        category: 'Все',
         cart: [],
         currentStep: 0,
         order: {
-          customerName: "",
-          phone: "",
-          payment: "cash",
-          deliveryType: "pickup",
-          paymentLink: "",
-          pickupPoint: "Микрорайон Сосновый, ул. Лесная, 12",
-          address: "",
-          comment: "",
+          customerName: '',
+          phone: '',
+          payment: 'cash',
+          deliveryType: 'pickup',
+          paymentLink: '',
+          pickupPoint: 'Микрорайон Сосновый, ул. Лесная, 12',
+          address: '',
+          comment: ''
         }
       };
 
-      const productGrid = document.getElementById("productGrid");
-      const categoryFilters = document.getElementById("categoryFilters");
-      const cartItems = document.getElementById("cartItems");
-      const emptyCart = document.getElementById("emptyCart");
-      const totalPrice = document.getElementById("totalPrice");
-      const cartCount = document.getElementById("cartCount");
-      const nextStepBtn = document.getElementById("nextStep");
-      const prevStepBtn = document.getElementById("prevStep");
-      const reviewList = document.getElementById("reviewList");
-      const reviewTotal = document.getElementById("reviewTotal");
-      const toast = document.getElementById("toast");
+      const productGrid = document.getElementById('productGrid');
+      const categoryFilters = document.getElementById('categoryFilters');
+      const cartItems = document.getElementById('cartItems');
+      const emptyCart = document.getElementById('emptyCart');
+      const totalPrice = document.getElementById('totalPrice');
+      const cartCount = document.getElementById('cartCount');
+      const reviewList = document.getElementById('reviewList');
+      const reviewTotal = document.getElementById('reviewTotal');
+      const nextStepBtn = document.getElementById('nextStep');
+      const prevStepBtn = document.getElementById('prevStep');
+      const toast = document.getElementById('toast');
 
       function showToast(message) {
         toast.textContent = message;
-        toast.classList.add("show");
+        toast.classList.add('show');
         window.clearTimeout(showToast.timeoutId);
-        showToast.timeoutId = setTimeout(() => toast.classList.remove("show"), 1800);
+        showToast.timeoutId = setTimeout(() => toast.classList.remove('show'), 1800);
       }
 
       function getFilteredProducts() {
-        return state.category === "Все"
+        return state.category === 'Все'
           ? products
           : products.filter((product) => product.category === state.category);
       }
 
       function renderFilters() {
-        categoryFilters.innerHTML = categories
-          .map(
-            (category) => `
-              <button class="chip ${state.category === category ? "active" : ""}" data-category="${category}">
-                ${category}
-              </button>
-            `
-          )
-          .join("");
+        categoryFilters.innerHTML = categories.map((category) => `
+          <button class="chip ${state.category === category ? 'active' : ''}" data-category="${category}">
+            ${category}
+          </button>
+        `).join('');
 
-        categoryFilters.querySelectorAll(".chip").forEach((button) => {
-          button.addEventListener("click", () => {
+        categoryFilters.querySelectorAll('.chip').forEach((button) => {
+          button.addEventListener('click', () => {
             state.category = button.dataset.category;
             renderFilters();
             renderProducts();
@@ -1213,93 +1140,82 @@
         const filtered = getFilteredProducts();
 
         if (!filtered.length) {
-          productGrid.innerHTML = '<div class="panel" style="padding: 20px; grid-column: 1 / -1;">Ничего не найдено.</div>';
+          productGrid.innerHTML = '<div class="product-card" style="padding:20px; grid-column: 1 / -1;">Ничего не найдено.</div>';
           return;
         }
 
-        productGrid.innerHTML = filtered
-          .map(
-            (product) => `
-              <article class="product-card" data-id="${product.id}">
-                <div class="product-visual"><span>${product.emoji}</span></div>
-                <div class="product-body">
-                  <div class="meta-row">
-                    <span class="product-badge">${product.category}</span>
-                    <span class="price">${product.price} ₽</span>
-                  </div>
-                  <h3>${product.name}</h3>
-                  <p class="product-description">${product.description}</p>
+        productGrid.innerHTML = filtered.map((product) => `
+          <article class="product-card">
+            <div class="product-visual"><span>${product.emoji}</span></div>
+            <div class="product-body">
+              <div class="meta-row">
+                <span class="product-badge">${product.category}</span>
+                <span class="price">${product.price} ₽</span>
+              </div>
 
-                  <div class="stats">
-                    <div class="stat">
-                      <strong>Ккал</strong>
-                      <span>${product.kcal}</span>
-                    </div>
-                    <div class="stat">
-                      <strong>Белки</strong>
-                      <span>${product.protein}г</span>
-                    </div>
-                    <div class="stat">
-                      <strong>Жиры</strong>
-                      <span>${product.fat}г</span>
-                    </div>
-                  </div>
+              <h3 class="product-name">${product.name}</h3>
+              <p class="product-description">${product.description}</p>
 
-                  <div class="product-actions">
-                    <div class="qty-control">
-                      <button class="qty-btn" data-action="decrease" data-product-id="${product.id}">−</button>
-                      <div class="qty-value" data-qty="${product.id}">1</div>
-                      <button class="qty-btn" data-action="increase" data-product-id="${product.id}">+</button>
-                    </div>
-                    <button class="add-btn" data-add-product="${product.id}">В корзину</button>
-                  </div>
+              <div class="nutrition">
+                <div class="nutrient">
+                  <strong>Ккал</strong>
+                  <span>${product.kcal}</span>
                 </div>
-              </article>
-            `
-          )
-          .join("");
+                <div class="nutrient">
+                  <strong>Белки</strong>
+                  <span>${product.protein}г</span>
+                </div>
+                <div class="nutrient">
+                  <strong>Жиры</strong>
+                  <span>${product.fat}г</span>
+                </div>
+              </div>
+
+              <div class="product-actions">
+                <div class="qty-control">
+                  <button class="qty-btn" data-action="decrease" data-product-id="${product.id}">−</button>
+                  <div class="qty-value" data-qty="${product.id}">1</div>
+                  <button class="qty-btn" data-action="increase" data-product-id="${product.id}">+</button>
+                </div>
+                <button class="add-btn" data-add-product="${product.id}">В корзину</button>
+              </div>
+            </div>
+          </article>
+        `).join('');
 
         bindProductActions();
       }
 
       function bindProductActions() {
-        document.querySelectorAll("[data-add-product]").forEach((button) => {
-          button.addEventListener("click", () => {
-            const productId = button.dataset.addProduct;
-            addToCart(productId, 1);
-          });
+        document.querySelectorAll('[data-add-product]').forEach((button) => {
+          button.addEventListener('click', () => addToCart(button.dataset.addProduct));
         });
 
-        document.querySelectorAll("[data-action]").forEach((button) => {
+        document.querySelectorAll('[data-action]').forEach((button) => {
           const productId = button.dataset.productId;
           const action = button.dataset.action;
 
-          button.addEventListener("click", () => {
+          button.addEventListener('click', () => {
             const qtyNode = document.querySelector(`[data-qty="${productId}"]`);
             if (!qtyNode) return;
 
-            let current = Number(qtyNode.textContent);
-            current = action === "increase" ? current + 1 : Math.max(1, current - 1);
+            let current = Number(qtyNode.textContent) || 1;
+            current = action === 'increase' ? current + 1 : Math.max(1, current - 1);
             qtyNode.textContent = current;
           });
         });
       }
 
-      function addToCart(productId, qty = 1) {
+      function addToCart(productId) {
         const product = products.find((item) => item.id === productId);
         if (!product) return;
 
+        const qtyNode = document.querySelector(`[data-qty="${productId}"]`);
+        const selectedQty = qtyNode ? Number(qtyNode.textContent) || 1 : 1;
+
         const existing = state.cart.find((item) => item.id === productId);
-        if (existing) {
-          const qtyNode = document.querySelector(`[data-qty="${productId}"]`);
-          const selectedQty = qtyNode ? Number(qtyNode.textContent) : qty;
-          existing.quantity += selectedQty;
-        } else {
-          state.cart.push({
-            ...product,
-            quantity: qty,
-          });
-        }
+        if (existing) existing.quantity += selectedQty;
+        else state.cart.push({ ...product, quantity: selectedQty });
 
         document.querySelectorAll(`[data-qty="${productId}"]`).forEach((node) => {
           node.textContent = 1;
@@ -1323,29 +1239,25 @@
 
       function renderCart() {
         if (!state.cart.length) {
-          cartItems.innerHTML = "";
-          emptyCart.classList.remove("hidden");
+          cartItems.innerHTML = '';
+          emptyCart.classList.remove('hidden');
         } else {
-          emptyCart.classList.add("hidden");
-          cartItems.innerHTML = state.cart
-            .map(
-              (item) => `
-                <div class="cart-item">
-                  <div class="cart-item-main">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-meta">${item.variant} • ${item.quantity} шт.</div>
-                  </div>
-                  <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-                    <div class="cart-item-price">${item.price * item.quantity} ₽</div>
-                    <button class="qty-btn" data-remove-id="${item.id}" title="Удалить" style="width:28px;height:28px;">×</button>
-                  </div>
-                </div>
-              `
-            )
-            .join("");
+          emptyCart.classList.add('hidden');
+          cartItems.innerHTML = state.cart.map((item) => `
+            <div class="cart-item">
+              <div>
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-meta">${item.variant} • ${item.quantity} шт.</div>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="cart-item-price">${item.price * item.quantity} ₽</div>
+                <button class="remove-btn" data-remove-id="${item.id}" title="Удалить">×</button>
+              </div>
+            </div>
+          `).join('');
 
-          cartItems.querySelectorAll("[data-remove-id]").forEach((button) => {
-            button.addEventListener("click", () => removeFromCart(button.dataset.removeId));
+          cartItems.querySelectorAll('[data-remove-id]').forEach((button) => {
+            button.addEventListener('click', () => removeFromCart(button.dataset.removeId));
           });
         }
 
@@ -1354,103 +1266,92 @@
 
       function setActivePaymentBox() {
         document.querySelectorAll('input[name="payment"]').forEach((input) => {
-          const box = input.closest(".radio-box");
-          box.classList.toggle("active", input.checked);
+          const box = input.closest('.radio-box');
+          if (box) box.classList.toggle('active', input.checked);
         });
       }
 
       function setActiveDeliveryBox() {
         document.querySelectorAll('input[name="deliveryType"]').forEach((input) => {
-          const box = input.closest(".radio-box");
-          box.classList.toggle("active", input.checked);
+          const box = input.closest('.radio-box');
+          if (box) box.classList.toggle('active', input.checked);
         });
 
-        const deliveryType = document.querySelector('input[name="deliveryType"]:checked')?.value || "pickup";
-        const pickupBlock = document.getElementById("pickupBlock");
-        const deliveryBlock = document.getElementById("deliveryBlock");
-
-        pickupBlock.classList.toggle("hidden", deliveryType !== "pickup");
-        deliveryBlock.classList.toggle("hidden", deliveryType !== "delivery");
+        const deliveryType = document.querySelector('input[name="deliveryType"]:checked')?.value || 'pickup';
+        document.getElementById('pickupBlock').classList.toggle('hidden', deliveryType !== 'pickup');
+        document.getElementById('deliveryBlock').classList.toggle('hidden', deliveryType !== 'delivery');
       }
 
       function syncCheckoutFields() {
-        state.order.customerName = document.getElementById("customerName").value.trim();
-        state.order.phone = document.getElementById("phone").value.trim();
-        state.order.payment = document.querySelector('input[name="payment"]:checked')?.value || "cash";
-        state.order.deliveryType = document.querySelector('input[name="deliveryType"]:checked')?.value || "pickup";
-        state.order.paymentLink = document.getElementById("paymentLink").value.trim();
-        state.order.pickupPoint = document.getElementById("pickupPoint").value;
-        state.order.address = document.getElementById("address").value.trim();
-        state.order.comment = document.getElementById("comment").value.trim();
+        state.order.customerName = document.getElementById('customerName').value.trim();
+        state.order.phone = document.getElementById('phone').value.trim();
+        state.order.payment = document.querySelector('input[name="payment"]:checked')?.value || 'cash';
+        state.order.deliveryType = document.querySelector('input[name="deliveryType"]:checked')?.value || 'pickup';
+        state.order.paymentLink = document.getElementById('paymentLink').value.trim();
+        state.order.pickupPoint = document.getElementById('pickupPoint').value;
+        state.order.address = document.getElementById('address').value.trim();
+        state.order.comment = document.getElementById('comment').value.trim();
       }
 
       function renderReview() {
         syncCheckoutFields();
 
-        const items = state.cart.map((item) => `${item.name} — ${item.quantity} шт. × ${item.price} ₽`).join("<br>");
-        const paymentText = state.order.payment === "card" ? "Картой" : "Наличными";
-        const deliveryText = state.order.deliveryType === "delivery" ? "Доставка" : "Самовывоз";
-        const addressText = state.order.deliveryType === "delivery"
-          ? (state.order.address || "Не указан")
-          : (state.order.pickupPoint || "Не выбран");
+        const items = state.cart.map((item) => `${item.name} — ${item.quantity} шт. × ${item.price} ₽`).join('<br>');
+        const paymentText = state.order.payment === 'card' ? 'Картой' : 'Наличными';
+        const deliveryText = state.order.deliveryType === 'delivery' ? 'Доставка' : 'Самовывоз';
+        const addressText = state.order.deliveryType === 'delivery'
+          ? (state.order.address || 'Не указан')
+          : (state.order.pickupPoint || 'Не выбран');
 
         reviewList.innerHTML = `
-          <li><strong>Клиент</strong><span>${state.order.customerName || "—"}</span></li>
-          <li><strong>Телефон</strong><span>${state.order.phone || "—"}</span></li>
+          <li><strong>Клиент</strong><span>${state.order.customerName || '—'}</span></li>
+          <li><strong>Телефон</strong><span>${state.order.phone || '—'}</span></li>
           <li><strong>Оплата</strong><span>${paymentText}</span></li>
           <li><strong>Получение</strong><span>${deliveryText}</span></li>
           <li><strong>Адрес</strong><span>${addressText}</span></li>
-          <li><strong>Товары</strong><span>${items || "—"}</span></li>
-          <li><strong>Комментарий</strong><span>${state.order.comment || "—"}</span></li>
+          <li><strong>Товары</strong><span>${items || '—'}</span></li>
+          <li><strong>Комментарий</strong><span>${state.order.comment || '—'}</span></li>
         `;
       }
 
       function updateStepUI() {
-        const sections = document.querySelectorAll(".step-section");
-        const pills = document.querySelectorAll(".step-pill");
+        const sections = document.querySelectorAll('.step-section');
+        const pills = document.querySelectorAll('.step-pill');
 
         sections.forEach((section) => {
-          const isActive = Number(section.dataset.step) === state.currentStep;
-          section.classList.toggle("active", isActive);
+          section.classList.toggle('active', Number(section.dataset.step) === state.currentStep);
         });
 
         pills.forEach((pill, index) => {
-          pill.classList.toggle("active", index === state.currentStep);
+          pill.classList.toggle('active', index === state.currentStep);
         });
 
-        prevStepBtn.classList.toggle("hidden", state.currentStep === 0);
-        nextStepBtn.textContent = state.currentStep === 2 ? "Подтвердить заказ" : "Далее";
+        prevStepBtn.classList.toggle('hidden', state.currentStep === 0);
+        nextStepBtn.textContent = state.currentStep === 2 ? 'Подтвердить заказ' : 'Далее';
 
-        if (state.currentStep === 2) {
-          renderReview();
-        }
+        if (state.currentStep === 2) renderReview();
       }
 
       function validateStep() {
         if (state.cart.length === 0) {
-          showToast("Корзина пустая. Добавьте товары");
+          showToast('Корзина пуста. Добавьте товар');
           return false;
         }
 
         if (state.currentStep === 0) {
-          if (!document.getElementById("customerName").value.trim() || !document.getElementById("phone").value.trim()) {
-            showToast("Заполните имя и номер телефона");
+          if (!document.getElementById('customerName').value.trim() || !document.getElementById('phone').value.trim()) {
+            showToast('Заполните имя и номер телефона');
             return false;
           }
         }
 
         if (state.currentStep === 1) {
-          if (document.querySelector('input[name="deliveryType"]:checked')?.value === "delivery") {
-            const address = document.getElementById("address").value.trim();
-            if (!address) {
-              showToast("Укажите адрес доставки");
+          if (document.querySelector('input[name="deliveryType"]:checked')?.value === 'delivery') {
+            if (!document.getElementById('address').value.trim()) {
+              showToast('Укажите адрес доставки');
               return false;
             }
           }
-        }
-
-        if (state.currentStep === 2) {
-          return true;
         }
 
         return true;
@@ -1475,18 +1376,18 @@
             variant: item.variant,
             count: item.quantity,
             price: item.price,
-            total: item.price * item.quantity,
-          })),
+            total: item.price * item.quantity
+          }))
         };
 
         if (window.Telegram && window.Telegram.WebApp) {
           window.Telegram.WebApp.sendData(JSON.stringify(order));
-          window.Telegram.WebApp.showAlert("✅ Заказ отправлен, менеджер свяжется с вами.");
+          window.Telegram.WebApp.showAlert('✅ Заказ отправлен, менеджер свяжется с вами.');
           return;
         }
 
-        console.log("Telegram Mini App не найден. Тестовый режим:", order);
-        showToast("Тестовый режим: заказ зарегистрирован в консоли");
+        console.log('Тестовый режим — заказ:', order);
+        showToast('Тестовый режим: заказ отправлен в консоль');
       }
 
       function nextStep() {
@@ -1510,37 +1411,37 @@
       }
 
       function bindStaticControls() {
-        document.getElementById("scrollToCatalog").addEventListener("click", () => {
-          document.getElementById("catalog").scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById('scrollToCatalog').addEventListener('click', () => {
+          document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
-        document.getElementById("scrollToAbout").addEventListener("click", () => {
-          document.getElementById("about").scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById('scrollToAbout').addEventListener('click', () => {
+          document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
         document.querySelectorAll('input[name="payment"]').forEach((input) => {
-          input.addEventListener("change", () => {
+          input.addEventListener('change', () => {
             setActivePaymentBox();
             const { value } = document.querySelector('input[name="payment"]:checked');
-            document.getElementById("paymentLinkField").style.display = value === "card" ? "block" : "none";
+            document.getElementById('paymentLinkField').classList.toggle('hidden', value !== 'card');
           });
         });
 
         document.querySelectorAll('input[name="deliveryType"]').forEach((input) => {
-          input.addEventListener("change", () => {
+          input.addEventListener('change', () => {
             setActiveDeliveryBox();
           });
         });
 
-        document.getElementById("customerName").addEventListener("input", syncCheckoutFields);
-        document.getElementById("phone").addEventListener("input", syncCheckoutFields);
-        document.getElementById("pickupPoint").addEventListener("change", syncCheckoutFields);
-        document.getElementById("address").addEventListener("input", syncCheckoutFields);
-        document.getElementById("comment").addEventListener("input", syncCheckoutFields);
-        document.getElementById("paymentLink").addEventListener("input", syncCheckoutFields);
+        document.getElementById('customerName').addEventListener('input', syncCheckoutFields);
+        document.getElementById('phone').addEventListener('input', syncCheckoutFields);
+        document.getElementById('pickupPoint').addEventListener('change', syncCheckoutFields);
+        document.getElementById('address').addEventListener('input', syncCheckoutFields);
+        document.getElementById('comment').addEventListener('input', syncCheckoutFields);
+        document.getElementById('paymentLink').addEventListener('input', syncCheckoutFields);
 
-        nextStepBtn.addEventListener("click", nextStep);
-        prevStepBtn.addEventListener("click", prevStep);
+        nextStepBtn.addEventListener('click', nextStep);
+        prevStepBtn.addEventListener('click', prevStep);
       }
 
       function init() {
