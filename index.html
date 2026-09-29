@@ -3,34 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#20382c" />
-  <title>Традиции Вкуса — домашняя кухня</title>
+  <meta name="theme-color" content="#ef8f1d" />
+  <title>Курзе — меню</title>
   <style>
     :root {
-      --bg: #f5f2e9;
-      --panel: #fffdf8;
-      --soft: #e8ede4;
-      --primary: #ad573c;
-      --primary-dark: #85432f;
-      --primary-soft: #f1ded2;
-      --text: #202a23;
-      --muted: #69736a;
-      --line: rgba(32,42,35,0.12);
-      --danger: #b4473e;
-      --success: #386b4e;
-      --shadow: 0 16px 36px rgba(34,47,38,0.09);
-      --radius-xl: 10px;
-      --radius-lg: 8px;
-      --radius-md: 6px;
-      --radius-sm: 4px;
+      --bg: #fffaf5;
+      --panel: rgba(255,255,255,0.92);
+      --soft: #fff2e2;
+      --primary: #ef8f1d;
+      --primary-dark: #d96d00;
+      --primary-soft: #ffe4b8;
+      --text: #1d160f;
+      --muted: #6f584d;
+      --line: rgba(29,22,15,0.08);
+      --danger: #eb4d4b;
+      --success: #18a957;
+      --shadow: 0 18px 40px rgba(153, 90, 14, 0.14);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--bg);
+      font-family: Inter, 'Segoe UI', Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(239,143,29,0.14), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(239,143,29,0.1), transparent 30%),
+        var(--bg);
       color: var(--text);
     }
 
@@ -60,9 +63,9 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(245,242,233,0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 245, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(29,22,15,0.06);
     }
 
     .topbar-inner {
@@ -84,21 +87,19 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 6px;
-      background: #20382c;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #ffba60);
       display: grid;
       place-items: center;
-      color: #f5f2e9;
-      box-shadow: none;
-      font-size: 0.9rem;
-      font-family: Georgia, 'Times New Roman', serif;
-      letter-spacing: 0;
+      box-shadow: var(--shadow);
+      font-size: 1.5rem;
     }
 
     .brand-text {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0;
+      font-size: 0.73rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .pill {
@@ -107,9 +108,9 @@
       gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: #e8ede4;
-      border: 1px solid rgba(32,56,44,0.12);
-      color: #345340;
+      background: rgba(239,143,29,0.08);
+      border: 1px solid rgba(239,143,29,0.15);
+      color: var(--primary-dark);
       font-size: 0.7rem;
       font-weight: 800;
     }
@@ -133,63 +134,52 @@
     }
 
     .hero-card {
-      min-height: 360px;
-      background: #20382c;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      box-shadow: 0 22px 44px rgba(24,39,29,0.16);
-      padding: 42px 40px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,242,226,0.98));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
       position: relative;
       overflow: hidden;
-      color: #f7f3e9;
     }
 
     .hero-card::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, #20382c 0%, rgba(32,56,44,0.94) 43%, rgba(32,56,44,0.12) 100%);
-      pointer-events: none;
+      width: 210px;
+      height: 210px;
+      right: -70px;
+      top: -60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,186,96,0.4), transparent 62%);
     }
 
     .hero-card > * { position: relative; z-index: 1; }
 
-    .hero-image {
-      position: absolute;
-      inset: 0 0 0 auto;
-      width: 64%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.82;
-    }
-
     .eyebrow {
       display: inline-flex;
       padding: 8px 12px;
-      background: rgba(236,224,193,0.12);
-      border: 1px solid rgba(236,224,193,0.26);
+      background: rgba(239,143,29,0.09);
+      border: 1px solid rgba(239,143,29,0.12);
       border-radius: 999px;
-      color: #e8d7b3;
+      color: var(--primary-dark);
       font-size: 0.7rem;
       font-weight: 900;
-      letter-spacing: 0;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .hero h1 {
-      max-width: 510px;
-      margin: 20px 0 14px;
-      font-size: clamp(2.4rem, 8vw, 4.3rem);
-      letter-spacing: 0;
-      line-height: 0.98;
-      font-weight: 500;
+      margin: 16px 0 10px;
+      font-size: clamp(2.1rem, 8vw, 4rem);
+      letter-spacing: -0.07em;
+      line-height: 0.92;
     }
 
     .hero p {
-      max-width: 430px;
-      color: rgba(247,243,233,0.76);
-      line-height: 1.65;
-      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.62;
+      margin: 0 0 18px;
     }
 
     .hero-actions {
@@ -206,21 +196,21 @@
 
     .primary-btn, .secondary-btn, .step-btn {
       min-height: 48px;
-      border-radius: 5px;
+      border-radius: 14px;
       padding: 0 18px;
       font-weight: 900;
     }
 
     .primary-btn {
-      background: #b96143;
-      color: #fffaf2;
-      box-shadow: 0 10px 22px rgba(10,20,14,0.16);
+      background: linear-gradient(135deg, var(--primary), #ffb456);
+      color: white;
+      box-shadow: 0 14px 26px rgba(239,143,29,0.26);
     }
 
     .secondary-btn {
-      background: rgba(255,255,255,0.08);
-      color: #f7f3e9;
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(239,143,29,0.08);
+      color: var(--primary-dark);
+      border: 1px solid rgba(239,143,29,0.2);
     }
 
     .primary-btn:hover, .secondary-btn:hover, .chip:hover, .mini-btn:hover, .qty-btn:hover, .remove-btn:hover, .cart-trigger:hover, .step-btn:hover {
@@ -238,7 +228,7 @@
     .section-head h2 {
       margin: 0;
       font-size: clamp(1.6rem, 5vw, 2.3rem);
-      letter-spacing: 0;
+      letter-spacing: -0.06em;
     }
 
     .filters {
@@ -252,15 +242,15 @@
       min-height: 38px;
       padding: 0 14px;
       border-radius: 999px;
-      background: #e8ede4;
+      background: rgba(29,22,15,0.04);
       color: var(--text);
       font-weight: 800;
     }
 
     .chip.active {
-      background: #20382c;
-      color: #fffdf8;
-      box-shadow: none;
+      background: linear-gradient(135deg, var(--primary), #ffb75d);
+      color: white;
+      box-shadow: 0 10px 18px rgba(239,143,29,0.22);
     }
 
     .product-grid {
@@ -270,21 +260,21 @@
     }
 
     .product-card {
-      background: var(--panel);
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      box-shadow: 0 8px 22px rgba(34,47,38,0.07);
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
 
     .product-visual {
       position: relative;
-      height: 220px;
+      height: 160px;
       display: grid;
       place-items: center;
       overflow: hidden;
-      background: #e8ede4;
-      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(239,143,29,0.16), rgba(255,186,96,0.25));
+      border-bottom: 1px solid rgba(29,22,15,0.04);
       animation: cardRise 0.5s ease both;
     }
 
@@ -344,15 +334,15 @@
     }
 
     .price {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: 0;
+      letter-spacing: -0.06em;
     }
 
     .product-name {
       margin: 0 0 8px;
       font-size: 1.2rem;
-      letter-spacing: 0;
+      letter-spacing: -0.04em;
     }
 
     .product-desc {
@@ -373,7 +363,7 @@
     .stat-box {
       padding: 10px 8px;
       border-radius: 12px;
-      background: #f2f1e9;
+      background: rgba(29,22,15,0.03);
       text-align: center;
     }
 
@@ -402,14 +392,14 @@
       gap: 8px;
       padding: 5px 7px;
       border-radius: 12px;
-      background: #edf0e9;
+      background: rgba(29,22,15,0.04);
     }
 
     .qty-btn {
       width: 30px;
       height: 30px;
       border-radius: 10px;
-      background: #fffdf8;
+      background: white;
       font-size: 1.2rem;
       color: var(--text);
     }
@@ -425,8 +415,8 @@
       min-height: 40px;
       padding: 0 14px;
       border-radius: 12px;
-      background: #20382c;
-      color: #fffdf8;
+      background: linear-gradient(135deg, var(--primary), #ffb75d);
+      color: white;
       font-weight: 900;
     }
 
@@ -439,10 +429,10 @@
       height: 64px;
       border-radius: 22px;
       border: none;
-      background: #20382c;
+      background: linear-gradient(135deg, var(--primary), #ffbc69);
       color: white;
       font-size: 1.7rem;
-      box-shadow: 0 14px 30px rgba(32,56,44,0.3);
+      box-shadow: 0 18px 36px rgba(239,143,29,0.34);
       display: grid;
       place-items: center;
       cursor: pointer;
@@ -499,7 +489,7 @@
       align-items: center;
       gap: 12px;
       padding: 12px 12px 10px;
-      background: #f3f2eb;
+      background: rgba(29,22,15,0.03);
       border: 1px solid rgba(29,22,15,0.05);
       border-radius: 14px;
     }
@@ -561,7 +551,7 @@
     .total-box span {
       font-size: 1.6rem;
       font-weight: 900;
-      letter-spacing: 0;
+      letter-spacing: -0.06em;
     }
 
     .screen-actions {
@@ -572,14 +562,14 @@
 
     .step-btn {
       flex: 1;
-      background: #e8ede4;
+      background: rgba(29,22,15,0.05);
       color: var(--text);
       font-weight: 900;
     }
 
     .step-btn.primary {
-      background: #20382c;
-      color: #fffdf8;
+      background: linear-gradient(135deg, var(--primary), #ffb75d);
+      color: white;
     }
 
     .input-group {
@@ -631,13 +621,13 @@
 
     .radio-box input { position: absolute; opacity: 0; pointer-events: none; }
     .radio-box.active {
-      background: #e8ede4;
-      border-color: rgba(32,56,44,0.3);
+      background: rgba(239,143,29,0.1);
+      border-color: rgba(239,143,29,0.24);
     }
 
     .review-box {
       padding: 14px;
-      background: #f3f2eb;
+      background: rgba(29,22,15,0.02);
       border: 1px solid rgba(29,22,15,0.06);
       border-radius: 16px;
     }
@@ -678,7 +668,7 @@
     .success-box h3 {
       margin: 0 0 10px;
       font-size: 2rem;
-      letter-spacing: 0;
+      letter-spacing: -0.06em;
     }
 
     .success-box p {
@@ -710,31 +700,9 @@
     }
 
     @media (max-width: 700px) {
-      .hero-card {
-        min-height: 390px;
-        padding: 28px 22px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 60%;
-        inset: 0 0 auto;
-      }
-
-      .hero-card::after {
-        background: linear-gradient(0deg, #20382c 22%, rgba(32,56,44,0.9) 45%, rgba(32,56,44,0.06) 100%);
-      }
-
-      .hero h1 { font-size: 2.7rem; }
-
       .product-grid {
         grid-template-columns: 1fr;
       }
-
-      .product-visual { height: 240px; }
 
       .screen-actions {
         display: grid;
@@ -751,7 +719,7 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <div class="brand-mark">ТВ</div>
+        <div class="brand-mark">🥟</div>
         <div class="brand-text">Традиции Вкуса</div>
       </div>
       <div class="pill">Свежо • быстро • вкусно</div>
@@ -762,11 +730,11 @@
     <section class="screen active" id="catalogScreen">
       <div class="hero">
         <div class="hero-card">
-          <img class="hero-image" src="manty.jpg" alt="Домашние манты с говядиной" />
           <div class="eyebrow">Домашние полуфабрикаты</div>
-          <h1>Вкус, который начинается дома</h1>
+          <h1>Готовые блюда на каждый день</h1>
           <p>
-            Курзе, манты и блинчики ручной работы. Знакомые рецепты, хорошие продукты и забота в каждой порции.
+            Курзе, манты и блинчики с мясом — вкус, удобство и домашняя подача без лишней суеты.
+            Выбирайте позиции, добавляйте в корзину и оформляйте заказ одним каскадом.
           </p>
           <div class="hero-actions">
             <button class="primary-btn" id="ctaCatalog">Сделать заказ</button>
